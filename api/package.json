@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API for e-commerce site",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanssonfridamaria/API-ecom-site.git"
+  },
+  "author": "Frida Johansson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johanssonfridamaria/API-ecom-site/issues"
+  },
+  "homepage": "https://github.com/johanssonfridamaria/API-ecom-site#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
