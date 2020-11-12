@@ -52,7 +52,7 @@ exports.registerUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-    User.findOne({ email: req.body.email })
+    User.findOne({ id: req.body.email })
         .then(user => {
             if (user === null) {
                 return res.status(404).json({
@@ -95,4 +95,22 @@ exports.getUsers = (req, res) => {
     User.find()
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(err))
+}
+
+exports.deleteUser = (req, res) => {
+    User.deleteOne({email: req.body.email})
+    .then(()=>{
+        res.status(200).json({
+            statusCode: 200,
+            status: true,
+            message: 'User deleted'
+        })
+    })
+    .catch(()=>{
+        res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Failed to delete user'
+        }) 
+    })
 }
