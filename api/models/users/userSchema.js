@@ -12,4 +12,4 @@ const userSchema= mongodb.Schema({
     modified:        {type:Date, default: Date.now()}
 });
 
-module.exports = mongodb.model('user', userSchema);
+module.exports = mongodb.model('User', userSchema);
