@@ -1,5 +1,6 @@
 const User = require('./userSchema');
 const bcrypt = require('bcrypt');
+const auth = require('../../authentication/auth');
 
 exports.registerUser = (req, res) => {
 
