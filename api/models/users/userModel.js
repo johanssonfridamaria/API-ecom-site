@@ -1,8 +1,7 @@
-const mongodb=require('mongoose');
+const mongodb = require('mongoose');
 const User = require('./userSchema');
 const bcrypt = require('bcrypt');
 const auth = require('../../authentication/auth');
-const { mongo } = require('mongoose');
 
 exports.registerUser = (req, res) => {
 
@@ -95,46 +94,46 @@ exports.loginUser = (req, res) => {
 
 exports.getUsers = (req, res) => {
     User.find()
-    .then(data => res.status(200).json(data))
-    .catch(err => res.status(500).json(err))
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(500).json(err))
 }
 
 exports.updateUser = (req, res) => {
     User.updateOne({ email: req.params.email }, req.body)
-    .then(() => {
-        User.updateOne({ email: req.params.email }, { $set: { modified: Date.now() }})
+        .then(() => {
+            User.updateOne({ email: req.params.email }, { $set: { modified: Date.now() } })
+                .then(() => {
+                    res.status(200).json({
+                        statusCode: 200,
+                        status: true,
+                        message: 'User updated successfully'
+                    })
+                })
+        })
+        .catch(() => {
+            res.status(500).json({
+                statusCode: 500,
+                status: false,
+                message: 'Failed to update user'
+            })
+        })
+}
+
+exports.deleteUser = (req, res) => {
+    User.deleteOne({ email: req.params.email })
         .then(() => {
             res.status(200).json({
                 statusCode: 200,
                 status: true,
-                message: 'User updated successfully'
+                message: 'User deleted'
             })
         })
-    })
-    .catch(() => {
-        res.status(500).json({
-            statusCode: 500,
-            status: false,
-            message: 'Failed to update user'
+        .catch(() => {
+            res.status(500).json({
+                statusCode: 500,
+                status: false,
+                message: 'Failed to delete user'
+            })
         })
-    })
-}
-
-exports.deleteUser = (req, res) => {
-    User.deleteOne({email: req.params.email})
-    .then(()=>{
-        res.status(200).json({
-            statusCode: 200,
-            status: true,
-            message: 'User deleted'
-        })
-    })
-    .catch(()=>{
-        res.status(500).json({
-            statusCode: 500,
-            status: false,
-            message: 'Failed to delete user'
-        }) 
-    })
 }
 
