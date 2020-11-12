@@ -25,7 +25,7 @@ exports.registerUser = (req, res) => {
                 }
 
                 const user = new User({
-                    // _id:            new mongodb.Types.ObjectId,
+                    _id: new mongodb.Types.ObjectId,
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     email: req.body.email,
@@ -98,9 +98,9 @@ exports.getUsers = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-    User.updateOne({ email: req.params.email }, req.body)
+    User.updateOne({ _id: req.params.id }, req.body)
     .then(() => {
-        User.updateOne({ email: req.params.email }, { $set: { modified: Date.now() }})
+        User.updateOne({ _id: req.params.id }, { $set: { modified: Date.now() }})
         .then(() => {
             res.status(200).json({
                 statusCode: 200,
