@@ -1,6 +1,8 @@
+const mongodb=require('mongoose');
 const User = require('./userSchema');
 const bcrypt = require('bcrypt');
 const auth = require('../../authentication/auth');
+const { mongo } = require('mongoose');
 
 exports.registerUser = (req, res) => {
 
@@ -98,9 +100,9 @@ exports.getUsers = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-    User.updateOne({ _id: req.params.id }, req.body)
+    User.updateOne({ email: req.params.email }, req.body)
     .then(() => {
-        User.updateOne({ _id: req.params.id }, { $set: { modified: Date.now() }})
+        User.updateOne({ email: req.params.email }, { $set: { modified: Date.now() }})
         .then(() => {
             res.status(200).json({
                 statusCode: 200,
@@ -119,7 +121,7 @@ exports.updateUser = (req, res) => {
 }
 
 exports.deleteUser = (req, res) => {
-    User.deleteOne({email: req.body.email})
+    User.deleteOne({email: req.params.email})
     .then(()=>{
         res.status(200).json({
             statusCode: 200,
