@@ -4,7 +4,7 @@ const express= require('express');
 const app= express();
 
 const userController = require('./controllers/userController');
-
+const productController = require('./controllers/productController');
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -20,6 +20,7 @@ app.use(express.json());
 
 //controllers
 app.use('/api/users', userController);
+app.use('/api/products', productController);
 
 //export the whole file
 module.exports = app;
