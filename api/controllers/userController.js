@@ -7,8 +7,8 @@ router.post('/login', userModel.loginUser);
 
 router.get('/', userModel.getUsers);
 
-router.patch('/:id', userModel.updateUser);
+router.patch('/:email', userModel.updateUser);
 
-router.delete('/delete', userModel.deleteUser);
+router.delete('/:email', userModel.deleteUser);
 
 module.exports = router;
