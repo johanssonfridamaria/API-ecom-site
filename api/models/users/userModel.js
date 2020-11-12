@@ -97,6 +97,27 @@ exports.getUsers = (req, res) => {
     .catch(err => res.status(500).json(err))
 }
 
+exports.updateUser = (req, res) => {
+    User.updateOne({ email: req.params.email }, req.body)
+    .then(() => {
+        User.updateOne({ email: req.params.email }, { $set: { modified: Date.now() }})
+        .then(() => {
+            res.status(200).json({
+                statusCode: 200,
+                status: true,
+                message: 'User updated successfully'
+            })
+        })
+    })
+    .catch(() => {
+        res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Failed to update user'
+        })
+    })
+}
+
 exports.deleteUser = (req, res) => {
     User.deleteOne({email: req.body.email})
     .then(()=>{
@@ -114,3 +135,4 @@ exports.deleteUser = (req, res) => {
         }) 
     })
 }
+
