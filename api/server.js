@@ -6,6 +6,6 @@ const mongoose = require('mongoose');
 const port = 8000;
 
 const serverURI = 'http://localhost:' + port;
-const mongoURI = 'mongodb+srv://frida:bytmig123@cluster0.2xfoe.mongodb.net/ECOM?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGO_URI;
 
 app.listen(port, () => console.log('Webserver: ' + serverURI));
