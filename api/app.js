@@ -3,7 +3,7 @@ const express= require('express');
 // Synkronize with our app
 const app= express();
 
-
+const userController = require('./controllers/userController');
 
 
 app.use((req, res, next) => {
