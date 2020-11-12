@@ -4,6 +4,6 @@ const userModel = require('../models/users/userModel');
 router.post('/register', userModel.registerUser);
 router.post('/login', userModel.loginUser);
 router.get('/', userModel.getUsers);
-rother.delete('/delete', userModel.deleteUser);
+router.delete('/delete', userModel.deleteUser);
 
 module.exports = router;
