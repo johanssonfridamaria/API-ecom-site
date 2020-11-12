@@ -54,7 +54,7 @@ exports.registerUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-    User.findOne({ id: req.body.email })
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (user === null) {
                 return res.status(404).json({
