@@ -36,6 +36,7 @@ exports.createProduct = (req, res) => {
 
         const product = new Product({
             name: req.body.name,
+            brand: req.body.brand,
             short: req.body.short,
             desc: req.body.desc,
             price: req.body.price,

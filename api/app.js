@@ -24,3 +24,4 @@ app.use('/api/products', productController);
 
 //export the whole file
 module.exports = app;
+
