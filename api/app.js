@@ -1,5 +1,8 @@
 // import express from node_modules
 const express= require('express');
+const swaggerJsDoc= require('swagger-jsdoc');
+const swaggerUI= require('swagger-ui-express');
+
 // Synkronize with our app
 const app= express();
 
