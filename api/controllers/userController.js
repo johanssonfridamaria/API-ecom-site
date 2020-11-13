@@ -5,10 +5,10 @@ router.post('/register', userModel.registerUser);
 
 router.post('/login', userModel.loginUser);
 
-// router.get('/', userModel.getUsers);
+router.get('/', userModel.getUsers);
 
-// router.patch('/:email', userModel.updateUser);
+router.patch('/:email', userModel.updateUser);
 
-// router.delete('/:email', userModel.deleteUser);
+router.delete('/:email', userModel.deleteUser);
 
 module.exports = router;
