@@ -17,7 +17,7 @@ const app = require('../app');
  *       desc:
  *         type: string
  *       price:
- *         type: integer
+ *         type: number
  *       image:
  *         type: string
  */
@@ -25,7 +25,7 @@ const app = require('../app');
 
 /**
  * @swagger
- * /products:
+ * /api/products:
  *      get:
  *      tags:
  *       - Products
@@ -43,7 +43,7 @@ router.get('/', productModel.getProducts);
 
 /**
  * @swagger
- * /products/{id}:
+ * /api/products/{id}:
  *   get:
  *     tags:
  *       - Products
@@ -67,7 +67,7 @@ router.get('/:id', productModel.getOneProduct);
 
  /**
  * @swagger
- * /products/new:
+ * /api/products/new:
  *   post:
  *     tags:
  *       - Products
@@ -90,7 +90,7 @@ router.post('/new', auth.verifyToken, productModel.createProduct);
 
 /**
  * @swagger
- * /products/{id}:
+ * /api/products/{id}:
  *   patch:
  *     tags:
  *       - Products
@@ -118,7 +118,7 @@ router.patch('/:id', auth.verifyToken, productModel.updateProduct);
 
 /**
  * @swagger
- * /products/{id}:
+ * /api/products/{id}:
  *   delete:
  *     tags:
  *       - Products
